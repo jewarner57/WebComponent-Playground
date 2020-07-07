@@ -1,4 +1,23 @@
+	// Create a template
+	const template = document.createElement('template')
+	// Set the content of the template
+  template.innerHTML = `
+    <style>
+      .container {
+        border: 3px solid;
+        overflow: hidden;
+      }
 
+      .inner {
+        display: flex;
+        transition: 400ms;
+      }
+    </style>
+    <div class="container">
+			<div class="inner"></div>
+    </div>
+  `
+  
 // Creates a simple slideshow
 
 class SimpleSlides extends HTMLElement {
@@ -12,24 +31,17 @@ class SimpleSlides extends HTMLElement {
     this._transition = this.getAttribute('transition')
 
     // Create a shadow root node
-    this._shadowRoot = this.attachShadow({ mode: 'open' })
+    const tempNode = template.content.cloneNode(true)
+		this._shadowRoot = this.attachShadow({ mode: 'open' });
+		this._shadowRoot.appendChild(tempNode)
 
     // Create a couple elements to manage slides
-    this._container = document.createElement('div')
+    this._container = this._shadowRoot.querySelector('.container')
     // Add some styles
     this._container.style.width = this._width + 'px'
     this._container.style.height = this._height + 'px'
-    this._container.style.border = '3px solid'
-    // this._container.style.overflow = 'hidden'
 
-    this._inner = document.createElement('div')
-    this._inner.style.display = 'flex'
-    this._inner.style.transition = '400ms'
-
-    this._container.appendChild(this._inner)
-
-    // Append this node
-    this._shadowRoot.appendChild(this._container)
+    this._inner = this._shadowRoot.querySelector('.inner')
 
     // Get array of images
     this._imgs = Array.from(this.querySelectorAll('img'))
@@ -39,25 +51,22 @@ class SimpleSlides extends HTMLElement {
     }
     
     // Keep track of the index of the current image displayed
-    this._index = -1
+    this._index = 0
     this._paused = false
+
   }
 
   _addTimer() {
-    console.log('add timer')
     this._timer = setInterval(() => {
       this._nextImg()
     }, this._time)
   }
 
   _removeTimer() {
-    console.log('remove timer')
     clearInterval(this._timer)
   }
 
   connectedCallback() {
-    console.log('connected')
-    this._removeTimer()
     this._addTimer()
     this._nextImg()
   }
@@ -71,9 +80,9 @@ class SimpleSlides extends HTMLElement {
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
+    console.log(name, oldValue, newValue)
     switch(name) {
       case 'time':
-        console.log('attr time')
         this._time = newValue
         this._removeTimer()
         this._addTimer()
@@ -92,7 +101,6 @@ class SimpleSlides extends HTMLElement {
   }
 
   _nextImg() {
-    console.log('next img ' + this._index)
     this._index = (this._index + 1) % this._imgs.length
     const x = this._index * -this._width
     this._inner.style.transform = `translate(${x}px, 0)`

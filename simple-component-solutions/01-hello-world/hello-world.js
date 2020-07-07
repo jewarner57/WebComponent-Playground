@@ -20,9 +20,10 @@ class HelloWorld extends HTMLElement {
     // Make a new element to hold hello world
     this._el = document.createElement('h1')
     // Set the content of the new element
-    this._el.innerHTML = 'Hello World'
+    this._el.innerHTML = '<em>Foo Bar</em>'
     // Set styles on the new element
-    this._el.style.color = 'red'
+    this._el.style.color = 'rgb(255, 255, 0)'
+    // background-color -> backgroundColor
     this._el.style.backgroundColor = 'black'
     this._el.style.padding = '0.25em 0.5em'
     this._el.style.textAlign = 'center'
@@ -33,7 +34,7 @@ class HelloWorld extends HTMLElement {
   }
 }
 
-// Register this new tag
+// Register this new tag <hello-world></hello-world>
 customElements.define('hello-world', HelloWorld);
 // ---------
 
