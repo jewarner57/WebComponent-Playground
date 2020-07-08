@@ -7,7 +7,6 @@
         border: 3px solid;
         overflow: hidden;
       }
-
       .inner {
         display: flex;
         transition: 400ms;
@@ -51,12 +50,13 @@ class SimpleSlides extends HTMLElement {
     }
     
     // Keep track of the index of the current image displayed
-    this._index = 0
+    this._index = -1
     this._paused = false
 
   }
 
   _addTimer() {
+    this._removeTimer(this._timer)
     this._timer = setInterval(() => {
       this._nextImg()
     }, this._time)
