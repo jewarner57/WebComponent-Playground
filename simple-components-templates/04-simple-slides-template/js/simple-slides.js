@@ -1,21 +1,22 @@
-	// Create a template
-	const template = document.createElement('template')
-	// Set the content of the template
-  template.innerHTML = `
-    <style>
-      .container {
-        border: 3px solid;
-        overflow: hidden;
-      }
-      .inner {
-        display: flex;
-        transition: 400ms;
-      }
-    </style>
-    <div class="container">
-			<div class="inner"></div>
-    </div>
-  `
+
+// Create a template
+const template = document.createElement('template')
+// Set the content of the template
+template.innerHTML = `
+  <style>
+    .container {
+      border: 3px solid;
+      overflow: hidden;
+    }
+    .inner {
+      display: flex;
+      transition: 400ms;
+    }
+  </style>
+  <div class="container">
+    <div class="inner"></div>
+  </div>
+`
   
 // Creates a simple slideshow
 
@@ -29,10 +30,15 @@ class SimpleSlides extends HTMLElement {
     this._time = this.getAttribute('time')
     this._transition = this.getAttribute('transition')
 
+
     // Create a shadow root node
     const tempNode = template.content.cloneNode(true)
 		this._shadowRoot = this.attachShadow({ mode: 'open' });
 		this._shadowRoot.appendChild(tempNode)
+
+
+
+
 
     // Create a couple elements to manage slides
     this._container = this._shadowRoot.querySelector('.container')
@@ -108,3 +114,9 @@ class SimpleSlides extends HTMLElement {
 }
 
 customElements.define('simple-slides', SimpleSlides)
+
+
+
+// Web Component - Shadow DOM has Shadows
+
+// Custom Element - No Shadows Shadow Free

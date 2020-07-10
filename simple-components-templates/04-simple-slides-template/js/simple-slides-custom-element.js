@@ -7,7 +7,7 @@
         border: 3px solid;
         overflow: hidden;
       }
-			
+
       .inner {
         display: flex;
         transition: 400ms;
@@ -107,4 +107,4 @@ class SimpleSlides extends HTMLElement {
   }
 }
 
-customElements.define('simple-slides', SimpleSlides)
+customElements.define('custom-slides', SimpleSlides)

@@ -117,7 +117,7 @@ class FancyCounter extends HTMLElement {
   }  
 
 
-  // Handle changes to time
+	// Handle changes to attributes
   attributeChangedCallback(name, oldValue, newValue) {
     if (name === 'value') {
 			this._value = parseInt(newValue)
