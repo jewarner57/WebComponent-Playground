@@ -1,3 +1,7 @@
+// The code here defines a "hello world" example
+// of web components. 
+// The component defines a new tag that displays 
+// the words "Hello World"
 
 // Define a class that extends HTMLElement
 // You can also extend specific tags 

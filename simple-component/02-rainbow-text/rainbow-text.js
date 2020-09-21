@@ -2,6 +2,7 @@
 class rainbowText extends HTMLElement {
   constructor() {
     super();
+
     this._shadowRoot = this.attachShadow({ mode: 'open' });
     
     // Get the text of the host element this.innerHTML
@@ -38,16 +39,22 @@ Follow these steps:
 - Get the text from the source tag with this.innerHTML
 - Split this into an array of words with split(' ')
 - Loop over the words
-  - Make a span element 
-  - Set the innerHTML to the word
-  - Set the style to a color
-  - Append the span to the shadowRoot
+  - Make a new span element with: document.createElement('span')
+  - Set the innerHTML to the word from the array: el.innerHTML = arr[i]
+  - Set the style to a color: el.style.color = someColor
+  - Append the span to the shadowRoot: this._shadowRoot.appendChild(el)
 
 To set the color you can use one of these methods. 
 
 Set the color with something like this: 
 
 const hue = 360 / words.length * i
-hsl(hue, 100%, 50%)
+const color = `hsl(${hue}, 100%, 50%)`
+
+- Challenge - 2 - 
+
+Modify the code to set the color of each letter.
+
+
 
 */

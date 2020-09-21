@@ -14,7 +14,6 @@ class BlinkText extends HTMLElement {
 
     // Use this to manage the opacity
     this._opacity = 1
-    
   }
 
 
