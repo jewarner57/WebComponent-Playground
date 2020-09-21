@@ -1,22 +1,23 @@
-	// Create a template
-	const template = document.createElement('template')
-	// Set the content of the template
-  template.innerHTML = `
-    <style>
-      .container {
-        border: 3px solid;
-        overflow: hidden;
-      }
 
-      .inner {
-        display: flex;
-        transition: 400ms;
-      }
-    </style>
-    <div class="container">
-			<div class="inner"></div>
-    </div>
-  `
+// Create a template
+const template = document.createElement('template')
+// Set the content of the template
+template.innerHTML = `
+	<style>
+		.container {
+			border: 3px solid;
+			overflow: hidden;
+		}
+
+		.inner {
+			display: flex;
+			transition: 400ms;
+		}
+	</style>
+	<div class="container">
+		<div class="inner"></div>
+	</div>
+`
   
 // Creates a simple slideshow
 
