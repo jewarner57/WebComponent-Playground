@@ -1,7 +1,8 @@
 
 class BlinkText extends HTMLElement {
+
   constructor() {
-    super();
+    super(); // Must call super!
     
     this._shadowRoot = this.attachShadow({ mode: 'open' });
 
@@ -14,6 +15,8 @@ class BlinkText extends HTMLElement {
 
     this._opacity = 1
   }
+
+
 
   // Lifecycle method called when this component is appended to the DOM
   connectedCallback() {

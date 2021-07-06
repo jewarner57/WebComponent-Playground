@@ -1,4 +1,6 @@
 
+
+
 // Define a class that extends HTMLElement
 // You can also extend specific tags 
 // Like: HTMLParagraphElement
@@ -63,3 +65,13 @@ use your own ideas:
 
 */
 
+// const cats = 999
+// function catTap() {
+
+// }
+
+// export { catTap, cats }
+
+// // -----
+
+// import { catTap, cats} from './script.js'

@@ -1,69 +1,70 @@
 
-	// Create a template
-	const template = document.createElement('template')
-	// Set the content of the template
-  template.innerHTML = `
-    <style>
-      .container {
-				margin: 3px;
-				display: flex;
-			}
+// Create a template
+const template = document.createElement('template')
+// Set the content of the template
+template.innerHTML = `
+	<style>
+		.container {
+			margin: 3px;
+			display: flex;
+			font-family: Helvetica;
+		}
 
-			.button {
-				padding: 1em;
-				background-color: #eee;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				border-top: 3px solid;
-				border-bottom: 3px solid;
-			}
+		.button {
+			padding: 1em;
+			background-color: #eee;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			border-top: 3px solid;
+			border-bottom: 3px solid;
+		}
 
-			.left {
-				border-top-left-radius: 0.5em;
-				border-bottom-left-radius: 0.5em;
-				border-left: 3px solid;
-			}
+		.left {
+			border-top-left-radius: 0.5em;
+			border-bottom-left-radius: 0.5em;
+			border-left: 3px solid;
+		}
 
-			.right {
-				border-top-right-radius: 0.5em;
-				border-bottom-right-radius: 0.5em;
-				border-right: 3px solid;
-			}
+		.right {
+			border-top-right-radius: 0.5em;
+			border-bottom-right-radius: 0.5em;
+			border-right: 3px solid;
+		}
 
-			.arrow {
-				width: 8px;
-				height: 8px;
-				border-top: 3px solid;
-				border-right: 3px solid;
-			}
+		.arrow {
+			width: 8px;
+			height: 8px;
+			border-top: 3px solid;
+			border-right: 3px solid;
+		}
 
-			.left .arrow {
-				transform: rotate(-135deg);
-			}
+		.left .arrow {
+			transform: rotate(-135deg);
+		}
 
-			.right .arrow {
-				transform: rotate(45deg);
-			}
+		.right .arrow {
+			transform: rotate(45deg);
+		}
 
-			.display {
-				padding: 1em;
-				border-top: 3px solid;
-				border-bottom: 3px solid;
-			}
-    </style>
-    <div class="container">
-			<div class="button left">
-				<div class="arrow"></div>
-			</div>
+		.display {
+			padding: 1em;
+			border-top: 3px solid;
+			border-bottom: 3px solid;
+		}
+	</style>
+	<div class="container">
+		<div class="button left">
+			<div class="arrow"></div>
+		</div>
 
-			<div class="display">0</div>
+		<div class="display">0</div>
 
-			<div class="button right">
-				<div class="arrow"></div>
-			</div>
-    </div>
-	`
+		<div class="button right">
+			<div class="arrow"></div>
+		</div>
+	</div>
+`
 
 class FancyCounter extends HTMLElement {
   constructor() {
@@ -156,3 +157,4 @@ framework.
 Modify the styles in code here to styles that would fit your framework. 
 
 */
+
