@@ -19,7 +19,7 @@ class SimpleSlides extends HTMLElement {
     // Add some styles
     this._container.style.width = this._width + 'px'
     this._container.style.height = this._height + 'px'
-    this._container.style.border = '3px solid'
+    this._container.style.border = '6px solid'
     this._container.style.overflow = 'hidden'
 
     this._inner = document.createElement('div')
