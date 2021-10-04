@@ -3,6 +3,9 @@ class FancyCounter extends HTMLElement {
   constructor() {
     super();
 
+    this._min = -999
+    this._max = 999
+    this._step = 1
     // Create a shadow node
     this._shadowRoot = this.attachShadow({ mode: 'open' });
 
@@ -17,6 +20,12 @@ class FancyCounter extends HTMLElement {
     this._right = document.createElement('div')
     this._center = document.createElement('h1')
 
+
+    this._leftarrow = document.createElement('h1')
+    this._leftarrow.innerHTML = '<'
+    this._rightarrow = document.createElement('h1')
+    this._rightarrow.innerHTML = '>'
+
     // Add an event to the left button. The left button should add 1 to 
     // the value and update the value displayed
     this._left.addEventListener("click", () => this._decrement())
@@ -30,7 +39,8 @@ class FancyCounter extends HTMLElement {
     this._container.append(this._center)
     this._container.append(this._right)
 
-
+    this._left.append(this._leftarrow)
+    this._right.append(this._rightarrow)
     // Style the container use display: flex
     this._container.style.display = 'flex'
 
@@ -55,13 +65,24 @@ class FancyCounter extends HTMLElement {
 
   // Use this increase the value 
   _increment(e) {
-    this._count += 1
+    this._count += this._step
+
+    if (this._count > this._max) {
+      this._count = this._max
+    }
+
     this._update()
   }
 
   // Use this to decrement your value
   _decrement(e) {
-    this._count -= 1
+    this._count -= this._step
+
+    if (this._count < this._min) {
+      this._count = this._min
+    }
+
+    this._update()
   }
 
   // Use this to update the value displayed
@@ -72,22 +93,27 @@ class FancyCounter extends HTMLElement {
 
   // Tell this component it should look for changes to time
   static get observedAttributes() {
-    return [];
+    return ['value', 'min', 'max', 'step'];
   }
 
-
-  // Handle changes to time
   attributeChangedCallback(name, oldValue, newValue) {
 
-  }
+    if (name === 'min') {
+      this._min = Number(newValue)
+    }
 
+    if (name === 'max') {
+      this._max = Number(newValue)
+    }
 
-  connectedCallback() {
+    if (name === 'step') {
+      this._step = Number(newValue)
+    }
 
-  }
-
-  disconnectedCallback() {
-
+    if (name === 'value') {
+      this._count = Number(newValue)
+      this._update()
+    }
   }
 }
 
